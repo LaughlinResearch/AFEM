@@ -1,4 +1,6 @@
 # AFEM — Airframe Finite Element Modeler
+
+[![Join the chat at https://gitter.im/AFEM_/Lobby](https://badges.gitter.im/AFEM_/Lobby.svg)](https://gitter.im/AFEM_/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 AFEM is a "fit-for-purpose" engineering development toolkit designed to support
 the use of high-order structural analysis during the early phases of aircraft
 conceptual design. As a development toolkit, it provides the engineer with a
