@@ -19,6 +19,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
 from OCCT.BRepBuilderAPI import BRepBuilderAPI_Transform
 from OCCT.gce import gce_MakeMirror
+from OCCT.gce import gce_MakeTranslation
 
 from afem.topology.entities import Shape
 
@@ -36,6 +37,22 @@ def mirror_shape(shape, pln):
     :raise RuntimeError: If the transformation fails or is not done.
     """
     trsf = gce_MakeMirror(pln.gp_pln).Value()
+    builder = BRepBuilderAPI_Transform(shape.object, trsf, True)
+    if not builder.IsDone():
+        raise RuntimeError('Failed to mirror the shape.')
+    return Shape.wrap(builder.Shape())
+
+
+def translate_shape(shape, vec):
+    """
+    Translate a shape along a vector.
+    :param afem.topology.entities.Shape shape: The shape.
+    :param Union[afem.geometry.entitites.Vector, Sequence] vec: The vector.
+    :return: The translated shape.
+    :rtype: afem.topology.entities.Shape
+    :raise RuntimeError: If the translation fails or is not done.
+    """
+    trsf = gce_MakeTranslation(vec.gp_vec).Value()
     builder = BRepBuilderAPI_Transform(shape.object, trsf, True)
     if not builder.IsDone():
         raise RuntimeError('Failed to mirror the shape.')
