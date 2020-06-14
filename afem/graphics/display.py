@@ -1,7 +1,8 @@
 # This file is part of AFEM which provides an engineering toolkit for airframe
 # finite element modeling during conceptual design.
 #
-# Copyright (C) 2016-2018  Laughlin Research, LLC (info@laughlinresearch.com)
+# Copyright (C) 2016-2018 Laughlin Research, LLC
+# Copyright (C) 2019-2020 Trevor Laughlin
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -18,9 +19,19 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
 import os
 
-from OCCT.SMESH import SMESH_Mesh, SMESH_subMesh
 from OCCT.TopoDS import TopoDS_Shape
-from OCCT.Visualization import BasicViewer
+
+try:
+    from OCCT.SMESH import SMESH_MeshVSLink, SMESH_Mesh, SMESH_subMesh
+    from OCCT.SMDSAbs import SMDSAbs_Node
+
+    HAS_SMESH = True
+except ImportError:
+    HAS_SMESH = False
+    msg = "SMESH module was not found for visualization."
+    raise NotImplementedError("SMESH not found")
+
+from OCCT.Visualization.WxViewer import ViewerWx
 
 from afem.base.entities import ViewableItem
 from afem.smesh.entities import Mesh, SubMesh, MeshGroup
@@ -33,7 +44,7 @@ __all__ = ["Viewer"]
 _icon = os.path.dirname(__file__) + '/resources/main.png'
 
 
-class Viewer(BasicViewer):
+class Viewer(ViewerWx):
     """
     Simple tool for viewing entities.
     """

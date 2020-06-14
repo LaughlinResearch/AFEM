@@ -1,7 +1,8 @@
 # This file is part of AFEM which provides an engineering toolkit for airframe
 # finite element modeling during conceptual design.
 #
-# Copyright (C) 2016-2018  Laughlin Research, LLC (info@laughlinresearch.com)
+# Copyright (C) 2016-2018 Laughlin Research, LLC
+# Copyright (C) 2019-2020 Trevor Laughlin
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -16,7 +17,7 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
-from collections import Sequence
+from collections.abc import Sequence
 
 from afem.base.entities import NamedItem, ViewableItem
 from afem.config import logger

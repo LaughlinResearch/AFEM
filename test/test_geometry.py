@@ -1,7 +1,8 @@
 # This file is part of AFEM which provides an engineering toolkit for airframe
 # finite element modeling during conceptual design.
 #
-# Copyright (C) 2016-2018  Laughlin Research, LLC (info@laughlinresearch.com)
+# Copyright (C) 2016-2018 Laughlin Research, LLC
+# Copyright (C) 2019-2020 Trevor Laughlin
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -371,7 +372,7 @@ class TestGeometryDistance(unittest.TestCase):
         c = NurbsCurveByPoints([(0., 0., 0.), (10., 0., 0.)]).curve
         p = Point(5., 1., 0.)
         dist = DistancePointToCurve(p, c)
-        self.assertEqual(dist.nsol, 3)
+        self.assertEqual(dist.nsol, 1)
 
 
 class TestGeometryIntersect(unittest.TestCase):

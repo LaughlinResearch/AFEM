@@ -58,24 +58,17 @@ face_nodes = mesh.create_group('face nodes', mesh.NODE, faces[-1])
 
 # Show edge nodes
 gui.clear()
-gui.add(mesh)
-for n in edge_nodes.node_iter:
-    p = Point(n.x, n.y, n.z)
-    gui.add(p)
+gui.add(mesh, edge_nodes)
 gui.start()
 
 # Show face nodes
-for n in face_nodes.node_iter:
-    p = Point(n.x, n.y, n.z)
-    gui.add(p)
+gui.clear()
+gui.add(mesh, face_nodes)
 gui.start()
 
 # Subtract the edge nodes from the face nodes. Other group methods include
 # union and intersect.
 group = face_nodes.subtract(edge_nodes)
 gui.clear()
-gui.add(mesh)
-for n in group.node_iter:
-    p = Point(n.x, n.y, n.z)
-    gui.add(p)
+gui.add(mesh, group)
 gui.start()

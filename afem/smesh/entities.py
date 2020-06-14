@@ -1,7 +1,8 @@
 # This file is part of AFEM which provides an engineering toolkit for airframe
 # finite element modeling during conceptual design.
 #
-# Copyright (C) 2016-2018  Laughlin Research, LLC (info@laughlinresearch.com)
+# Copyright (C) 2016-2018 Laughlin Research, LLC
+# Copyright (C) 2019-2020 Trevor Laughlin
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -1380,8 +1381,10 @@ class MeshGroup(object):
     def __init__(self, mesh, name, type_, shape=None):
         if isinstance(shape, Shape):
             group = mesh.object.AddGroup(type_, name, -1, shape.object)
+            self._on_shape = True
         else:
             group = mesh.object.AddGroup(type_, name, -1)
+            self._on_shape = False
         self._group = group
         self._ds = group.GetGroupDS()
         self._mesh = mesh
@@ -1440,6 +1443,8 @@ class MeshGroup(object):
 
         :raise AttributeError: If the group is not associated with a shape.
         """
+        if not self._on_shape:
+            raise AttributeError("Group is not associated to a shape.")
         return Shape.wrap(self._ds.GetShape())
 
     @shape.setter
@@ -1524,7 +1529,11 @@ class MeshGroup(object):
         :param afem.topology.entities.Shape shape: The shape.
 
         :return: None.
+
+        :raise AttributeError: If the group is not associated with a shape.
         """
+        if not self._on_shape:
+            raise AttributeError("Group is not associated to a shape.")
         self._ds.SetShape(shape.object)
 
     def contains_id(self, eid):

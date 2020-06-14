@@ -17,24 +17,32 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
-from afem.oml.entities import Body
+import unittest
 
-__all__ = ["CheckOML"]
+from afem.config import Settings
+from afem.exchange import ImportVSP
+from afem.graphics import Viewer
+
+Settings.log_to_console()
 
 
-class CheckOML(object):
+def show_shapes(*shapes):
+    gui = Viewer()
+    gui.add(*shapes)
+    gui.start()
+
+
+class TestImportVSP(unittest.TestCase):
     """
-    Check OML.
+    Test cases for afem.exchange.vsp.
     """
 
-    @staticmethod
-    def is_body(entity):
-        """
-        Check to see if the entity is a Body.
+    def test_import_777_200LR(self):
+        fn = './test_io/777-200LR.stp'
+        vsp_import = ImportVSP(fn)
+        self.assertFalse(vsp_import.has_invalid)
+        self.assertEqual(vsp_import.num_bodies, 7)
 
-        :param entity: Entity to check.
 
-        :return: *True* if Body, *False* if not.
-        :rtype: bool
-        """
-        return isinstance(entity, Body)
+if __name__ == '__main__':
+    unittest.main()

@@ -1,7 +1,8 @@
 # This file is part of AFEM which provides an engineering toolkit for airframe
 # finite element modeling during conceptual design.
 #
-# Copyright (C) 2016-2018  Laughlin Research, LLC (info@laughlinresearch.com)
+# Copyright (C) 2016-2018 Laughlin Research, LLC
+# Copyright (C) 2019-2020 Trevor Laughlin
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -20,13 +21,12 @@ from setuptools import setup
 
 setup(
     name='afem',
-    version='1.0.1',
+    version='1.1.0',
     packages=['afem', 'afem.adaptor', 'afem.base', 'afem.core',
               'afem.exchange', 'afem.geometry', 'afem.graphics',
               'afem.misc', 'afem.occ', 'afem.oml', 'afem.sketch',
               'afem.smesh', 'afem.structure', 'afem.topology'],
-    author='Laughlin Research, LLC',
-    author_email='info@laughlinresearch.com',
+    author='Trevor Laughlin',
     description='Airframe Finite Element Modeler',
     url='https://github.com/LaughlinResearch/AFEM',
     license='LGPL v2.1'

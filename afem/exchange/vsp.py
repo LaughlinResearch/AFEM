@@ -1,7 +1,8 @@
 # This file is part of AFEM which provides an engineering toolkit for airframe
 # finite element modeling during conceptual design.
 #
-# Copyright (C) 2016-2018  Laughlin Research, LLC (info@laughlinresearch.com)
+# Copyright (C) 2016-2018 Laughlin Research, LLC
+# Copyright (C) 2019-2020 Trevor Laughlin
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -104,6 +105,14 @@ class ImportVSP(object):
         :rtype: list(afem.oml.entities.Body)
         """
         return list(self._bodies.values())
+
+    @property
+    def num_bodies(self):
+        """
+        :return: The number of bodies.
+        :rtype: int
+        """
+        return len(self.all_bodies)
 
     @property
     def has_invalid(self):
@@ -549,8 +558,8 @@ def _build_solid(compound, divide_closed):
     if isinstance(sewn_shape, Face):
         sewn_shape = sewn_shape.to_shell()
 
-    # Attempt to unify planar domains
-    shell = UnifyShape(sewn_shape).shape
+    # Attempt to unify planar faces
+    shell = UnifyShape(sewn_shape, False).shape
 
     # Make solid
     if not isinstance(shell, Shell):

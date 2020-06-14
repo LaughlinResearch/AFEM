@@ -1,7 +1,8 @@
 # This file is part of AFEM which provides an engineering toolkit for airframe
 # finite element modeling during conceptual design.
 #
-# Copyright (C) 2016-2018  Laughlin Research, LLC (info@laughlinresearch.com)
+# Copyright (C) 2016-2018 Laughlin Research, LLC
+# Copyright (C) 2019-2020 Trevor Laughlin
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -78,9 +79,9 @@ class TestStructureEntities(unittest.TestCase):
         self.assertTrue(self.null_rib.shape.is_null)
 
     def test_part_tol(self):
-        self.assertAlmostEqual(self.fspar.shape.tol_avg, 1.5366868787116302e-5,
+        self.assertAlmostEqual(self.fspar.shape.tol_avg, 1.831889856924312e-5,
                                places=7)
-        self.assertAlmostEqual(self.fspar.shape.tol_max, 5.922308296231664e-5,
+        self.assertAlmostEqual(self.fspar.shape.tol_max, 7.575160986669027e-5,
                                places=7)
 
     def test_part_cref(self):
