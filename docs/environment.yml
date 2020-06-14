@@ -4,6 +4,7 @@ channels:
   - defaults
   - conda-forge
   - trelau
+  - sphinx
 
 dependencies:
   - python
@@ -11,3 +12,4 @@ dependencies:
   - numpy
   - scipy
   - wxpython
+  - sphinx_rtd_theme
