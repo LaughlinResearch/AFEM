@@ -3,10 +3,10 @@
 [![Documentation Status](https://readthedocs.org/projects/afem/badge/?version=latest)](http://afem.readthedocs.io/en/latest/?badge=latest)
 [![Join the chat at https://gitter.im/AFEM_/Lobby](https://badges.gitter.im/AFEM_/Lobby.svg)](https://gitter.im/AFEM_/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+![Workflow](https://github.com/LaughlinResearch/AFEM/workflows/Workflow/badge.svg)
 [![Anaconda-Server Badge](https://anaconda.org/laughlinresearch/afem/badges/installer/conda.svg)](https://anaconda.org/laughlinresearch/afem)
 [![Anaconda-Server Badge](https://anaconda.org/laughlinresearch/afem/badges/platforms.svg)](https://anaconda.org/laughlinresearch/afem)
 [![Anaconda-Server Badge](https://anaconda.org/laughlinresearch/afem/badges/downloads.svg)](https://anaconda.org/laughlinresearch/afem)
-[![Anaconda-Server Badge](https://anaconda.org/laughlinresearch/afem/badges/latest_release_date.svg)](https://anaconda.org/laughlinresearch/afem)
 
 AFEM is a "fit-for-purpose" engineering development toolkit designed to support
 the use of high-order structural analysis during the early phases of aircraft
@@ -23,91 +23,33 @@ All the other packages provide a more general and "Pythonic" set of entities
 and tools that could potentially be used to develop applications in other
 disciplines and/or domains.
 
-## Technology Stack
-The AFEM core technology stack includes:
+## Getting started using conda
+[Conda packages](https://anaconda.org/trelau/dashboard/) are
+available for a number of platforms and Python versions. Get started with:
 
-* [Python](https://www.python.org/): The Python programming language enables
-  rapid development and integration with other systems.
-
-* [OpenCASCADE](https://www.opencascade.com): This mature library provides
-  advanced geometric modeling and CAD functionality and is under active
-  development.
-
-* [Netgen](https://sourceforge.net/projects/netgen-mesher): This library
-  enables advanced meshing capabilities including 3-D tetrahedral and 2-D
-  unstructured quad-dominated surface meshing.
-
-* [Salome Platform](http://www.salome-platform.org): The core meshing library
-  from this open source application serves as the central component for
-  AFEM's mesh generation capabilities.
-  
-* [pyOCCT](https://github.com/LaughlinResearch/pyOCCT): This open source
-  project provides Python bindings to the OpenCASCADE and Salome Platform
-  meshing libraries.
-
-# Installation
-AFEM is currently only supported for Windows 64-bit Python 3.5 and 3.6.
-Cross-platform support is dependent upon prerequisites such as pyOCCT.
-[Anaconda Python](https://www.anaconda.com/download/) or
-[Miniconda](https://conda.io/miniconda.html) is recommended for installation
-and regular use since many of the prerequisites are available via the Anaconda
-Cloud.
-
-It is recommended that a designated environment be created and used for AFEM.
-An example of creating this environment for Anaconda Python within an Anaconda
-command prompt is:
-
-    conda create -n afem python=3.5
-
-This will create an environment named "afem" with Python 3.5. Make sure this
-environment is active when using AFEM. For Anaconda Python, activating this
-environment may look like:
-
+    conda create -n afem python=3.7
     activate afem
-
-within an Anaconda command prompt.
- 
-The [pyOCCT](https://github.com/LaughlinResearch/pyOCCT) package developed by
-Laughlin Research should now be installed. For supported platforms, installing
-pyOCCT can be done by:
-
-    conda install -c laughlinresearch -c conda-forge pyocct
-
-Other dependencies such as NumPy and SciPy can be installed as needed using
-the conda package manager:
-
-    conda install numpy scipy
+    conda install -c conda-forge -c trelau afem
     
-or pip:
+This will create an environment named "afem" and install `AFEM` and all
+necessary dependencies. You can replace the "afem" environment name with
+anything you'd like.
 
-    pip install numpy scipy
+The best way to get started is to examine and run the files in the *examples/*
+folder. Running the script:
+
+    python structure_wingbox.py
     
-A minimal graphical user interface requires the wxPython package which can be
-installed by:
+should generate an image similar to the one shown below. Remember to make sure
+the appropriate environment is active when using AFEM is applicable.
 
-    conda install -c conda-forge wxpython
-
-# Installing AFEM
-Be sure to activate the designed AFEM environment before installation.
-
-AFEM is a pure Python package and can be installed using the command:
-
-    python setup.py develop
-
-within the AFEM root folder. The ``develop`` option links to the source code
-at runtime so changes in the source are reflected in any programs using AFEM.
-The regular installation command:
-
-    python setup.py install
-    
-can be used to actually install the AFEM package into the Python site-packages
-directory.
+![wingbox](./docs/source/resources/wingbox.png)
 
 Installation files can be cleaned by:
 
     conda clean -a
 
-# Building Documentation
+# Building documentation
 The documentation can be built from sources using sphinx. Install sphinx and
 sphinx_rtd_theme in the desired conda environment by:
 
@@ -120,22 +62,15 @@ Then navigate to the *docs/* folder and run:
 This should build html documentation in a *docs/build/html* folder. Open the 
 index.html file with a web browser.
 
-# Getting Started
-The best way to get started is to examine and run the files in the *examples/*
-folder. Running the script:
+# Examples
+Finding mesh nodes shared between the spars and ribs:
+![wingbox](./docs/source/resources/associative_mesh.png)
 
-    python structure_wingbox.py
-    
-should generate an image similar to the one shown below. Remember to make sure
-the appropriate environment is active when using AFEM is applicable.
+Fuselage section with frames, floors, and floor supports modeled as beams:
+![fuselage](./docs/source/resources/fuselage_section.png)
 
-![wingbox](./docs/source/resources/wingbox.png)
+Flexibility to define custom structural components like a circular spar:
+![spar](./docs/source/resources/circular_spar.png)
 
-# TODO
-AFEM is under active development and should be considered a work in progress.
-The focus is currently:
-
-* Adding (and completing) examples
-* Simplifying the rules for meshing parts
-* Moving doctests to unit tests and adding more test
-* Cross-platform support for prerequisites like pyOCCT
+Structural geometry defined and joined between the wing and fuselage:
+![spar](./docs/source/resources/wing_body.png)
