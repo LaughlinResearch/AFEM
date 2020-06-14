@@ -7,7 +7,7 @@ channels:
   - sphinx
 
 dependencies:
-  - python
+  - python=3.8
   - pyocct
   - numpy
   - scipy
