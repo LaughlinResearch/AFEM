@@ -43,6 +43,26 @@ class TestImportVSP(unittest.TestCase):
         self.assertFalse(vsp_import.has_invalid)
         self.assertEqual(vsp_import.num_bodies, 7)
 
+    def test_import_thick_TE1(self):
+        """
+        Import and prepare a multi-section wing with a thick trailing edge
+        along the entire span.
+        """
+        fn = './test_io/vsp_wing_thick_TE1_v3.5.0.stp'
+        vsp_import = ImportVSP(fn)
+        self.assertFalse(vsp_import.has_invalid)
+        self.assertEqual(vsp_import.num_bodies, 1)
+
+    def test_import_thick_TE2(self):
+        """
+        Import and prepare a multi-section wing with a thick trailing edge
+        along where the middle airfoil has no thick trailing edge.
+        """
+        fn = './test_io/vsp_wing_thick_TE2_v3.5.0.stp'
+        vsp_import = ImportVSP(fn)
+        self.assertFalse(vsp_import.has_invalid)
+        self.assertEqual(vsp_import.num_bodies, 1)
+
 
 if __name__ == '__main__':
     unittest.main()
