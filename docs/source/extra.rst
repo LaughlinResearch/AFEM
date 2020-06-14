@@ -11,8 +11,8 @@ engineering publications:
 .. code-block:: bash
 
     @misc{AFEM,
-       author = {Laughlin Research, LLC},
-       year = {2018},
-       note = {https://github.com/LaughlinResearch/AFEM},
+       author = {Trevor Laughlin},
+       year = {2020},
+       note = {https://github.com/trelau/AFEM},
        title = {AFEM -- Airframe Finite Element Modeler}
     }

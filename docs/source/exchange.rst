@@ -72,18 +72,12 @@ metadata, solid bodies can still be built, but are given generic names like
 "Body.1" and it will be left to the user to decipher which represents the
 original OpenVSP component.
 
-For now, the forked OpenVSP version with metadata can be found at the
-`Laughlin Research OpenVSP Github <https://github.com/LaughlinResearch/OpenVSP>`_
+For now, the forked OpenVSP version with metadata can be found
+`here <https://github.com/trelau/OpenVSP>`_
 under the `step_metadata_support` and `step_metadata_support_v3.5.0` branches.
 Support for version 3.5.0 was provided since the underlying surface
 parametrization seemed to have changed afterwards and OpenCASCADE performance
 suffered.
-
-Windows builds for these modified versions of OpenVSP can be found here:
-
-* `OpenVSP 3.5.0 w/ metadata <https://ci.appveyor.com/project/LaughlinResearch/openvsp/build/3.5.0.9>`_
-
-* `OpenVSP 3.15.0 w/ metadata <https://ci.appveyor.com/project/LaughlinResearch/openvsp/build/3.15.0.8>`_
 
 Both of these builds include the Python API.
 

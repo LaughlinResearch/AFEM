@@ -61,8 +61,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'AFEM'
-copyright = '2018, Laughlin Research, LLC'
-author = 'Laughlin Research, LLC'
+copyright = '2020, Trevor Laughlin'
+author = 'Trevor Laughlin'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -166,7 +166,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'AFEM.tex', 'AFEM Documentation',
-     'Laughlin Research', 'manual'),
+     'Trevor Laughlin', 'manual'),
 ]
 
 latex_show_pagerefs = True

@@ -1,12 +1,13 @@
-name: latest
+name: docs
 
 channels:
   - defaults
   - conda-forge
-  - cad
+  - trelau
 
 dependencies:
-  - python=3.5
+  - python
   - pyocct
   - numpy
   - scipy
+  - wxpython

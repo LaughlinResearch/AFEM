@@ -28,6 +28,6 @@ setup(
               'afem.smesh', 'afem.structure', 'afem.topology'],
     author='Trevor Laughlin',
     description='Airframe Finite Element Modeler',
-    url='https://github.com/LaughlinResearch/AFEM',
+    url='https://github.com/trelau/AFEM',
     license='LGPL v2.1'
 )

@@ -1,7 +1,6 @@
 AFEM -- Aiframe Finite Element Modeler
 ======================================
-This documentation is for the Airframe Finite Element Modeler (AFEM) program
-developed by Laughlin Research, LLC.
+This documentation is for the Airframe Finite Element Modeler (AFEM) program.
 
 .. toctree::
    :maxdepth: 1

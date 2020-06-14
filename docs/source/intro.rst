@@ -34,6 +34,6 @@ The AFEM core technology stack includes:
   from this open source application serves as the central component for
   AFEM's mesh generation capabilities.
 
-* `pyOCCT <https://github.com/LaughlinResearch/pyOCCT>`_: This open source
+* `pyOCCT <https://github.com/trelau/pyOCCT>`_: This open source
   project provides Python bindings to the OpenCASCADE and Salome Platform
   meshing libraries.
