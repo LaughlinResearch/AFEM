@@ -46,14 +46,17 @@ def mirror_shape(shape, pln):
 def translate_shape(shape, vec):
     """
     Translate a shape along a vector.
+
     :param afem.topology.entities.Shape shape: The shape.
-    :param Union[afem.geometry.entitites.Vector, Sequence] vec: The vector.
+    :param afem.geometry.entities.Vector vec: The translation vector.
+
     :return: The translated shape.
     :rtype: afem.topology.entities.Shape
+
     :raise RuntimeError: If the translation fails or is not done.
     """
-    trsf = gce_MakeTranslation(vec.gp_vec).Value()
+    trsf = gce_MakeTranslation(vec).Value()
     builder = BRepBuilderAPI_Transform(shape.object, trsf, True)
     if not builder.IsDone():
-        raise RuntimeError('Failed to mirror the shape.')
+        raise RuntimeError('Failed to translate the shape.')
     return Shape.wrap(builder.Shape())

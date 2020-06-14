@@ -19,6 +19,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
 import unittest
 
+import afem.topology.transform
 from afem.exchange import brep
 from afem.geometry import *
 from afem.graphics import Viewer
@@ -689,6 +690,21 @@ class TestTopologyProps(unittest.TestCase):
         self.assertAlmostEqual(p.x, 0.5)
         self.assertAlmostEqual(p.y, 0.5)
         self.assertAlmostEqual(p.z, 0.5)
+
+
+class TestTopologyTransform(unittest.TestCase):
+    """
+    Test cases for afem.topology.transform.
+    """
+
+    def test_translate(self):
+        box = BoxBySize().solid
+        vec = VectorByXYZ().vector
+
+        new_box = afem.topology.transform.translate_shape(box, vec)
+
+        prop = VolumeProps(new_box)
+        self.assertAlmostEqual(1.5, prop.cg.x)
 
 
 if __name__ == '__main__':
