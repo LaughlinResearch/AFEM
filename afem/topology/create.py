@@ -826,6 +826,35 @@ class CompoundByShapes(object):
         return self._cp
 
 
+# COMPSOLID -----------------------------------------------------------------
+
+class CompSolidByShapes(object):
+    """
+    Create a compsolid from a list of shapes.
+
+    :param shapes: List of shapes.
+    :type: collections.Sequence(afem.topology.entities.Shape)
+    """
+
+    def __init__(self, shapes):
+        topods_compound = TopoDS_CompSolid()
+        builder = BRep_Builder()
+        builder.MakeCompSolid(topods_compound)
+        for shape in shapes:
+            shape = Shape.to_shape(shape)
+            if isinstance(shape, Shape):
+                builder.Add(topods_compound, shape.object)
+        self._cp = CompSolid(topods_compound)
+
+    @property
+    def compsolid(self):
+        """
+        :return: The compound.
+        :rtype: afem.topology.entities.Compound
+        """
+        return self._cp
+
+
 # HALFSPACE -------------------------------------------------------------------
 
 class HalfspaceByShape(object):
@@ -1141,16 +1170,14 @@ class CylinderByAxis(object):
 
     :param float radius: The radius.
     :param float height: The height.
-    :param axis2: Not yet implemented. Solid will be constructed in xy-plane.
-
-    :raise NotImplementedError: If an axis is provided.
+    :param axis2: The axis.
     """
 
     def __init__(self, radius, height, axis2=None):
         if axis2 is None:
             self._builder = BRepPrimAPI_MakeCylinder(radius, height)
         else:
-            raise NotImplementedError('Providing Axis2 not yet implemented.')
+            self._builder = BRepPrimAPI_MakeCylinder(axis2, radius, height)
 
     @property
     def face(self):

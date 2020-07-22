@@ -584,6 +584,31 @@ class LineByPoints(object):
         return self._line
 
 
+class LineSegmentByPoints:
+    """
+    Create a line segment between two points.
+
+    :param point_like p1: The first point.
+    :param point_like p2: The last point.
+
+    :raise TypeError: If *p1* or *p2* cannot be converted to a :class:`.Point`.
+    """
+
+    __slots__ = ('_curve',)
+
+    def __init__(self, p1, p2):
+        line = LineByPoints(p1, p2).line
+        self._curve = TrimmedCurveByPoints(line, p1, p2).curve
+
+    @property
+    def segment(self):
+        """
+        :return: The segment.
+        :rtype: afem.geometry.entities.TrimmedCurve
+        """
+        return self._curve
+
+
 # CIRCLE ----------------------------------------------------------------------
 
 class CircleByNormal(object):
