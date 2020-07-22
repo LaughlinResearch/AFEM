@@ -826,6 +826,35 @@ class CompoundByShapes(object):
         return self._cp
 
 
+# COMPSOLID -----------------------------------------------------------------
+
+class CompSolidByShapes(object):
+    """
+    Create a compsolid from a list of shapes.
+
+    :param shapes: List of shapes.
+    :type: collections.Sequence(afem.topology.entities.Shape)
+    """
+
+    def __init__(self, shapes):
+        topods_compound = TopoDS_CompSolid()
+        builder = BRep_Builder()
+        builder.MakeCompSolid(topods_compound)
+        for shape in shapes:
+            shape = Shape.to_shape(shape)
+            if isinstance(shape, Shape):
+                builder.Add(topods_compound, shape.object)
+        self._cp = CompSolid(topods_compound)
+
+    @property
+    def compsolid(self):
+        """
+        :return: The compound.
+        :rtype: afem.topology.entities.Compound
+        """
+        return self._cp
+
+
 # HALFSPACE -------------------------------------------------------------------
 
 class HalfspaceByShape(object):
