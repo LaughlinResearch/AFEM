@@ -1141,16 +1141,14 @@ class CylinderByAxis(object):
 
     :param float radius: The radius.
     :param float height: The height.
-    :param axis2: Not yet implemented. Solid will be constructed in xy-plane.
-
-    :raise NotImplementedError: If an axis is provided.
+    :param axis2: The axis.
     """
 
     def __init__(self, radius, height, axis2=None):
         if axis2 is None:
             self._builder = BRepPrimAPI_MakeCylinder(radius, height)
         else:
-            raise NotImplementedError('Providing Axis2 not yet implemented.')
+            self._builder = BRepPrimAPI_MakeCylinder(axis2, radius, height)
 
     @property
     def face(self):
